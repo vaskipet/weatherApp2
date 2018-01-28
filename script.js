@@ -5,12 +5,12 @@ function getData(e) {
     // after the function fires the data is visible for the user
     document.getElementById('rawdata').style.visibility = 'visible';
     // storing the location variable either from the input OR from the selection
-    var location = document.getElementById('location').value || document.getElementById('select').value;
+    const location = document.getElementById('location').value || document.getElementById('select').value;
     // the url variable where the is the query address
-    var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + location + '&appid=71caaafea1cb132af3cecad39715f455';
+    const url = 'http://api.openweathermap.org/data/2.5/weather?q=' + location + '&appid=71caaafea1cb132af3cecad39715f455';
 
     // Creating an XMLHttpRequest object 
-    var xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.send();
 
@@ -21,14 +21,17 @@ function getData(e) {
             // parsing the data
             jsonObj = JSON.parse(xhr.responseText);
 
-            var data = jsonObj;
+            const data = jsonObj;
             // storing the temperature variables so i can use them later
-            var tempK = data.main.temp;
-            var tempC = (tempK - 273.15);
+            const tempK = data.main.temp;
+            const tempC = (tempK - 273.15);
 
             // displaying the data to the user
-            document.getElementById('cityname').innerHTML = '<h4 class="text-center mt-2">' + data.name + '</h4>';
-            document.getElementById('icon').innerHTML = '<img  class="rounded mx-auto d-block picture" src="http://openweathermap.org/img/w/' + data.weather[0].icon + '.png">' + '<p class="text-center">' + (tempC).toFixed(0) + ' degrees celsius and ' + data.weather[0].description + '.</p>';
+            document.getElementById('cityname').innerHTML = `
+            <h4 class="text-center mt-2">${data.name}</h4>
+            <img class="rounded mx-auto d-block picture" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />
+            <p class="text-center">${(tempC).toFixed(0)} degrees celsius and ${data.weather[0].description}.</p>
+            `;
         }
     }
 }
