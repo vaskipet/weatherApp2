@@ -1,7 +1,7 @@
 // The data is hidden until something is written to the input or selected from the dropdown
 document.getElementById('rawdata').style.visibility = 'hidden';
 
-function getData(e) {
+const getData = e => {
     // after the function fires the data is visible for the user
     document.getElementById('rawdata').style.visibility = 'visible';
     // storing the location variable either from the input OR from the selection
@@ -39,7 +39,7 @@ function getData(e) {
 
 
 // just a small animation I did based on a tutorial nevermind about this
-function changeIcon() {
+const changeIcon = () => {
     let faicon = document.getElementById('faicon');
     faicon.innerHTML = '&#xf2dc;';
 
