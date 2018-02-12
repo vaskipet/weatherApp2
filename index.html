@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
 
     <!-- font awesome icons -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -17,70 +18,64 @@
     <style>
         body {
             margin-top: 80px;
-            background: steelblue;
-            color: #fff;
         }
-        
+
         img {
             height: 100px;
         }
+
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-md-3 mb-5">
-                <h1 class="display-3 text-center">WeatherAPI</h1>
-                <hr>
-                <p class="text-center">Making the world a better place with weather apps!</p>
-            </div>
+    <div class="container" >
+        <div class="col-12 mx-auto text-center mb-1" >
+            <h1 class="display-3 text-center">WeatherAPI</h1>
+            <hr>
+            <p class="text-center">Making the world a better place with weather apps!</p>
         </div>
-    </div>
+
     <main role="main" class="container">
-        <div class="col-12 col-md-12">
             <div class="row">
-                <div class="col-sm-12 col-lg-12 offset-md-3">
-                    <h2>Enter Location
-                        <div id="faicon" class="fa"></div>
-                    </h2>
-                    <form class="mb-5">
-                        <div class="row">
-                            <div class="form-group col-lg-4">
-                                <input id="location" type="text" class="form-control form-control-lg" placeholder="Enter City..">
-                            </div>
-                            <button type="button" onclick="getData()" class="btn btn-dark btn-lg btn-block mb-5 col-lg-2">Get the data!</button>
-                        </div>
-                        <div class="row">
-                            <select class="form-control form-control-lg col-lg-6" id="select" onchange="getData()">
-                                <option>If you dont want to write, select a city..</option>
-                                <option>Helsinki</option>
-                                <option>New York</option>
-                                <option>Tokyo</option>
-                            </select>
-                        </div>
-                    </form>
-
-                    <!-- this is hidden until user tries to receive data -->
-
-                    <div id="rawdata" class="col-lg-6 col-md-10 col-sm-12">
-
-                        <!-- city -->
-                        <div class="card bg-success mb-2">
-                            <div class="card-block">
-                                <!-- <h6 class="text-center">Cityname:</h6> -->
-                                <div id="cityname"></div>
-                                <div id="icon"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end of hidden -->
-
+                <div class="col-md-6 mx-auto text-center bg-primary mt-5 p-5 rounded">
+                    <h2 id="w-location"></h2>
+                    <h4 class="text-dark" id="w-desc"></h4>
+                    <h4 id="w-string"></h4>
+                    <img id="w-icon">
+                    <ul id="w-details" class="list-group mt-3 text-dark">
+                        <li class="list-group-item" id="w-wind"></li>
+                        <li class="list-group-item" id="w-humidity"></li>
+                        <li class="list-group-item" id="w-pressure"></li>
+                    </ul>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-12 mx-auto">
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-12 offset-md-12 mt-5">
+                            <h2 class="text-center">Enter Location
+                                <div id="faicon" class="fa"></div>
+                            </h2>
+                            <form class="mb-5">
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <input id="location" type="text" class="form-control form-control-lg" placeholder="Enter City..">
+                                    </div>
+                                    <button type="button" id="w-change-btn" class="btn btn-secondary btn-lg btn-block mb-5">Get the data!</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <hr>
+        <script src="storage.js"></script>
         <script src="script.js"></script>
+        <script src="ui.js"></script>
+        <script src="app.js"></script>
 </body>
 
 </html>
